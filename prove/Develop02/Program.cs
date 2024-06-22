@@ -54,7 +54,7 @@ namespace JournalApp
                 }
             }
 
-            // Save entries to a file
+            // Save entries to a JSON file
             public void SaveToFile(string filename)
             {
                 var json = JsonSerializer.Serialize(Entries, new JsonSerializerOptions { WriteIndented = true });
@@ -62,7 +62,7 @@ namespace JournalApp
                 Console.WriteLine($"Journal saved to {filename}");
             }
 
-            // Load entries from a file
+            // Load entries from a JSON file
             public void LoadFromFile(string filename)
             {
                 if (File.Exists(filename))
@@ -142,15 +142,13 @@ namespace JournalApp
 
         static void SaveJournal(Journal journal)
         {
-            Console.Write("Enter the filename to save the journal: ");
-            string filename = Console.ReadLine();
+            const string filename = "journal.txt";
             journal.SaveToFile(filename);
         }
 
         static void LoadJournal(Journal journal)
         {
-            Console.Write("Enter the filename to load the journal from: ");
-            string filename = Console.ReadLine();
+            const string filename = "journal.txt";
             journal.LoadFromFile(filename);
         }
     }
