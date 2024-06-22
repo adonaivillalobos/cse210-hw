@@ -116,6 +116,7 @@ namespace JournalApp
                         LoadJournal(journal);
                         break;
                     case "5":
+                        DisplayExitMessage();
                         return;
                     default:
                         Console.WriteLine("Invalid option. Please choose again.");
@@ -169,6 +170,15 @@ namespace JournalApp
             Console.WriteLine("3. **Perfectionism**: Your entries don’t have to be perfect. Focus on expressing your thoughts honestly.");
             Console.WriteLine("4. **Not Knowing What to Write**: Use prompts to get started. Write about your day, feelings, or random thoughts.");
             Console.WriteLine("5. **Difficulty in Forming a Habit**: Link journaling to an existing habit, like before bed or with your morning coffee.");
+        }
+
+        static void DisplayExitMessage()
+        {
+            Console.WriteLine("\nThank you for using the journal! Remember:");
+            Console.WriteLine("1. Consistency is key: Make journaling a regular habit.");
+            Console.WriteLine("2. Your journal is your safe space: Write freely and honestly.");
+            Console.WriteLine("3. Overcome barriers: Everyone faces challenges in journaling, but with small steps, you can make it a rewarding part of your life.");
+            Console.WriteLine("\nHappy journaling and see you next time!");
         }
     }
 }
