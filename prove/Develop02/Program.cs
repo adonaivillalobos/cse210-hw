@@ -138,6 +138,9 @@ namespace JournalApp
             journal.AddEntry(entry);
 
             Console.WriteLine("Entry saved.");
+
+            DisplayConsistencyMessage();
+            DisplayAvoidanceTips();
         }
 
         static void SaveJournal(Journal journal)
@@ -150,6 +153,22 @@ namespace JournalApp
         {
             const string filename = "journal.txt";
             journal.LoadFromFile(filename);
+        }
+
+        static void DisplayConsistencyMessage()
+        {
+            Console.WriteLine("\nRemember, to gain the most from your journal, consistency is key. Try to write regularly to build a habit.");
+            Console.WriteLine("Journaling can help you process your thoughts, track your progress, and reflect on your experiences.");
+        }
+
+        static void DisplayAvoidanceTips()
+        {
+            Console.WriteLine("\nTips on Why People Avoid Writing a Journal and How to Overcome It:");
+            Console.WriteLine("1. **Lack of Time**: Schedule a few minutes daily. Consistency matters more than the length of entries.");
+            Console.WriteLine("2. **Fear of Judgment**: Your journal is for you. Write freely without worrying about others' opinions.");
+            Console.WriteLine("3. **Perfectionism**: Your entries don’t have to be perfect. Focus on expressing your thoughts honestly.");
+            Console.WriteLine("4. **Not Knowing What to Write**: Use prompts to get started. Write about your day, feelings, or random thoughts.");
+            Console.WriteLine("5. **Difficulty in Forming a Habit**: Link journaling to an existing habit, like before bed or with your morning coffee.");
         }
     }
 }
