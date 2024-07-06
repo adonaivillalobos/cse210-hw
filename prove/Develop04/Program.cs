@@ -6,6 +6,7 @@ using System.Threading;
 
 namespace ActivityProgram
 {
+    // Abstract base class for all activities
     abstract class Activity
     {
         public abstract string Name { get; }
@@ -13,6 +14,7 @@ namespace ActivityProgram
         protected List<string> UsedPrompts { get; set; }
         protected Random Random { get; } = new Random();
 
+        // Start the activity with common steps
         public virtual void Start()
         {
             Console.Clear();
@@ -25,9 +27,13 @@ namespace ActivityProgram
             EndActivity();
         }
 
+        // Abstract method to perform specific activity
         protected abstract void PerformActivity(int duration);
+
+        // Abstract method to get the description of the activity
         protected abstract string GetDescription();
 
+        // Get a random prompt from the list
         protected string GetRandomPrompt()
         {
             if (Prompts.Count == 0)
@@ -44,6 +50,7 @@ namespace ActivityProgram
             return prompt;
         }
 
+        // Get the duration for the activity
         protected int GetDuration()
         {
             Console.Write("Enter the duration of the activity in seconds: ");
@@ -55,16 +62,18 @@ namespace ActivityProgram
             return duration;
         }
 
+        // Pause for the specified number of seconds with countdown display
         protected void Pause(int seconds)
         {
-            for (int i = 0; i < seconds; i++)
+            for (int i = seconds; i > 0; i--)
             {
-                Console.Write(".");
+                Console.Write($"\rNext action in {i} second{(i > 1 ? "s" : "")}...");
                 Thread.Sleep(1000);
             }
             Console.WriteLine();
         }
 
+        // End the activity with common steps
         protected void EndActivity()
         {
             Console.WriteLine($"You have completed the {Name} Activity.");
@@ -75,6 +84,7 @@ namespace ActivityProgram
             Console.ReadKey();
         }
 
+        // Log the activity completion to a file
         protected void LogActivity()
         {
             string logFilePath = "activity_log.txt";
@@ -82,12 +92,14 @@ namespace ActivityProgram
         }
     }
 
+    // Derived class for the Breathing activity
     class BreathingActivity : Activity
     {
         public override string Name => "Breathing";
-        protected override string GetDescription() => 
+        protected override string GetDescription() =>
             "This activity will help you relax by guiding you through slow breathing.";
 
+        // Perform the Breathing activity with repeated breaths
         protected override void PerformActivity(int duration)
         {
             for (int i = 0; i < duration / 5; i++)
@@ -100,6 +112,7 @@ namespace ActivityProgram
         }
     }
 
+    // Derived class for the Reflection activity
     class ReflectionActivity : Activity
     {
         public override string Name => "Reflection";
@@ -119,6 +132,7 @@ namespace ActivityProgram
         protected override string GetDescription() =>
             "This activity will help you reflect on your life and recognize your strengths.";
 
+        // Perform the Reflection activity with prompts and questions
         protected override void PerformActivity(int duration)
         {
             List<string> questions = new List<string>
@@ -144,6 +158,7 @@ namespace ActivityProgram
         }
     }
 
+    // Derived class for the Listing activity
     class ListingActivity : Activity
     {
         public override string Name => "Listing";
@@ -164,6 +179,7 @@ namespace ActivityProgram
         protected override string GetDescription() =>
             "This activity will help you reflect on the good things in your life.";
 
+        // Perform the Listing activity by asking the user to list items
         protected override void PerformActivity(int duration)
         {
             Console.WriteLine(GetRandomPrompt());
@@ -178,6 +194,7 @@ namespace ActivityProgram
         }
     }
 
+    // New activity: Visualization Activity
     class VisualizationActivity : Activity
     {
         public override string Name => "Visualization";
@@ -197,6 +214,7 @@ namespace ActivityProgram
         protected override string GetDescription() =>
             "This activity will help you visualize positive and calming scenarios.";
 
+        // Perform the Visualization activity by guiding the user through positive scenarios
         protected override void PerformActivity(int duration)
         {
             Console.WriteLine(GetRandomPrompt());
@@ -204,6 +222,7 @@ namespace ActivityProgram
         }
     }
 
+    // Main Program class
     class Program
     {
         static void Main(string[] args)
@@ -249,6 +268,7 @@ namespace ActivityProgram
             }
         }
 
+        // View the activity log
         static void ViewActivityLog()
         {
             string logFilePath = "activity_log.txt";
