@@ -1,0 +1,18 @@
+{
+  "UserName": "Player1",
+  "Score": 1150,
+  "Goals": [
+    {
+      "Name": "Run a marathon",
+      "Points": 1000
+    },
+    {
+      "Name": "Read scriptures",
+      "Points": 100
+    },
+    {
+      "Name": "Attend temple",
+      "Points": 50
+    }
+  ]
+}
