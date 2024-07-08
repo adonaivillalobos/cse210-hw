@@ -152,7 +152,7 @@ class Program
 
         while (true)
         {
-            Console.WriteLine("1. Create goal");
+            Console.WriteLine("\n1. Create goal");
             Console.WriteLine("2. Record event");
             Console.WriteLine("3. Display goals");
             Console.WriteLine("4. Save and exit");
